@@ -113,12 +113,13 @@ class Tester
      */
     public function getSummaryPassed()
     {
-        return 0 === $this->getCountPassed()
-            ? ' => No tests passed :('
-            : sprintf(join("\n", array_map(
-                [$this, 'formatDescription'],
-                $this->passed
-            )), 'PASS');
+        if (0 === $this->getCountPassed()) {
+            return ' => No tests passed :(';
+        }
+        return sprintf(join("\n", array_map(
+            [$this, 'formatDescription'],
+            $this->passed
+        )), 'PASS');
     }
 
     /**
@@ -128,12 +129,13 @@ class Tester
      */
     public function getSummaryFailed()
     {
-        return 0 === $this->getCountFailed()
-            ? ' => No tests failed!'
-            : sprintf(join("\n", array_map(
-                [$this, 'formatDescription'],
-                $this->failed
-            )), 'FAIL');
+        if (0 === $this->getCountFailed()) {
+            return ' => No tests failed!';
+        }
+        return sprintf(join("\n", array_map(
+            [$this, 'formatDescription'],
+            $this->failed
+        )), 'FAIL');
     }
 
     /**
@@ -176,9 +178,6 @@ class Tester
      */
     public function summary()
     {
-        $format = function ($description) {
-        };
-
         $cli = ('cli' == PHP_SAPI);
         $rule = str_repeat('-', 78);
 
