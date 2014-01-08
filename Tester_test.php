@@ -121,7 +121,7 @@ $t->test(
 
 $t->test(
     '[Meta] All tests passed',
-    $t->getCountPassed === $t->getCountTotal
+    $t->getCountPassed() === $t->getCountTotal()
 );
 
 print $t->summary();
