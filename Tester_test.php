@@ -75,7 +75,7 @@ $t->test(
             $db = new \PDO('sqlite::memory:');
             $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             $st = $db->prepare('DROP TABLE nonexistent');
-            $st>execute();
+            $st->execute();
         },
         'PDOException'
     )
